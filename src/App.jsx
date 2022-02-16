@@ -1,5 +1,17 @@
 import "./App.css";
-import { Container, Stack, Heading, Text, Box } from "@chakra-ui/react";
+import {
+  Container,
+  Stack,
+  Heading,
+  Text,
+  Box,
+  Button,
+  Grid,
+  GridItem,
+  Input,
+  Radio,
+  RadioGroup,
+} from "@chakra-ui/react";
 
 function App() {
   return (
@@ -11,7 +23,7 @@ function App() {
         </Text>
       </Box>
       <Container maxW="container.xl">
-        <Stack border="1px" borderRadius="2xl" padding="10">
+        <Box bg="white" boxShadow="lg" borderRadius="2xl" padding="10">
           <Text>
             In recognition of this generous gift, the Discovery Hub at SIT’s
             future campus in Punggol will be named the Chua Thian Poh Discovery
@@ -19,7 +31,58 @@ function App() {
             Student Activities Centre at SIT’s current campus in Dover will be
             named the Chua Thian Poh Student Activities Centre.
           </Text>
-        </Stack>
+        </Box>
+        <Grid
+          templateColumns="repeat(3, 1fr)"
+          gap={6}
+          marginTop={6}
+          textAlign="left"
+        >
+          <GridItem>
+            <Box
+              bg="white"
+              border="1px"
+              borderColor="gray.300"
+              borderRadius="2xl"
+              padding="10"
+            >
+              <Text fontSize="md" fontWeight="bold">
+                Your Details
+              </Text>
+              <Stack marginTop={4}>
+                <Text>Monthly income (before CPF deduction)</Text>
+                <Input />
+              </Stack>
+              <Stack marginTop={4}>
+                <Text>Age</Text>
+                <Input />
+              </Stack>
+              <Stack marginTop={4}>
+                <Text>Deduct Tax</Text>
+                <RadioGroup
+                  name="deductTax"
+                  onChange={() => console.log("change")}
+                >
+                  <Stack direction="row" spacing={4}>
+                    <Radio value="yes">Yes</Radio>
+                    <Radio value="no" defaultChecked>
+                      No
+                    </Radio>
+                  </Stack>
+                </RadioGroup>
+              </Stack>
+            </Box>
+          </GridItem>
+          <GridItem colSpan={2}>
+            <Box
+              bg="white"
+              border="1px"
+              borderColor="gray.300"
+              borderRadius="2xl"
+              padding="10"
+            ></Box>
+          </GridItem>
+        </Grid>
       </Container>
     </Box>
   );
