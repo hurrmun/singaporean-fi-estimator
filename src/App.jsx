@@ -12,6 +12,7 @@ import {
 import Header from "./components/Header";
 import Info from "./components/Info";
 import PersonalDetails from "./components/PersonalDetails";
+import AddAccountField from "./components/AddAccountField";
 
 function App() {
   return (
@@ -29,26 +30,16 @@ function App() {
             <PersonalDetails />
           </GridItem>
           <GridItem colSpan={2}>
-            <Box
-              bg="white"
-              border="1px"
-              borderColor="gray.300"
-              borderRadius="2xl"
-              padding="10"
-            >
-              <Text>Add new Investment Vehicle</Text>
-              <Input marginTop={3} placeholder="name of account" />
-              <Button isFullWidth marginTop={3}>
-                Add
-              </Button>
-            </Box>
-            <Box
-              bg="white"
-              border="1px"
-              borderColor="gray.300"
-              borderRadius="2xl"
-              padding="10"
-            ></Box>
+            <Stack spacing={6}>
+              <AddAccountField />
+              <Box
+                bg="white"
+                border="1px"
+                borderColor="gray.300"
+                borderRadius="2xl"
+                padding="10"
+              ></Box>
+            </Stack>
           </GridItem>
         </Grid>
       </Container>
