@@ -7,6 +7,7 @@ import {
   Grid,
   GridItem,
   Input,
+  Button,
 } from "@chakra-ui/react";
 import Header from "./components/Header";
 import Info from "./components/Info";
@@ -34,7 +35,13 @@ function App() {
               borderColor="gray.300"
               borderRadius="2xl"
               padding="10"
-            ></Box>
+            >
+              <Text>Add new Investment Vehicle</Text>
+              <Input marginTop={3} placeholder="name of account" />
+              <Button isFullWidth marginTop={3}>
+                Add
+              </Button>
+            </Box>
             <Box
               bg="white"
               border="1px"
