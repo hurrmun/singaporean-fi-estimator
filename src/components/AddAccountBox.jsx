@@ -11,7 +11,9 @@ const AddAccountBox = () => {
       padding="10"
     >
       <Stack spacing={4}>
-        <Text fontWeight="bold">Account Name</Text>
+        <Text fontWeight="bold" fontSize={20}>
+          Account Name
+        </Text>
         <Input placeholder="e.g Investent Account" />
         <AddAccountButton />
       </Stack>

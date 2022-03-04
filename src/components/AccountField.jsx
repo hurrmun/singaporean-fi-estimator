@@ -1,4 +1,5 @@
 import { Box, Stack, Flex, Text, Button, Input } from "@chakra-ui/react";
+import LabelInputGroup from "./LabelInputGroup";
 
 const AccountField = () => {
   return (
@@ -18,18 +19,9 @@ const AccountField = () => {
         </Flex>
 
         <Stack spacing={4}>
-          <Box>
-            <Text>Initial Amount ($)</Text>
-            <Input marginTop={2} />
-          </Box>
-          <Box>
-            <Text>Monthly Deposit ($)</Text>
-            <Input marginTop={2} />
-          </Box>
-          <Box>
-            <Text>Annual Interest (%)</Text>
-            <Input marginTop={2} />
-          </Box>
+          <LabelInputGroup label="Initial Amount ($)" />
+          <LabelInputGroup label="Monthly Deposit ($)" />
+          <LabelInputGroup label="Projected Annual Interest (%)" />
         </Stack>
       </Stack>
     </Box>

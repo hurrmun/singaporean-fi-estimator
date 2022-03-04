@@ -38,6 +38,17 @@ function App() {
             <Stack spacing={6}>
               <AddAccountBox />
               <AccountField />
+              <Box
+                bg="white"
+                border="1px"
+                borderColor="gray.300"
+                borderRadius="2xl"
+                padding="10"
+              >
+                <Text fontSize={20} fontWeight="bold">
+                  Your Projected Earnings
+                </Text>
+              </Box>
             </Stack>
           </GridItem>
         </Grid>
