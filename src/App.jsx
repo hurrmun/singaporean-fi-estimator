@@ -1,23 +1,11 @@
 import "./App.css";
-import {
-  Container,
-  Stack,
-  Text,
-  Box,
-  Grid,
-  GridItem,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  Button,
-  Form,
-  Flex,
-} from "@chakra-ui/react";
+import { Container, Stack, Text, Box, Grid, GridItem } from "@chakra-ui/react";
 import Header from "./components/Header";
 import Info from "./components/Info";
 import PersonalDetails from "./components/PersonalDetails";
 import AddAccountBox from "./components/AddAccountBox";
 import AccountField from "./components/AccountField";
+import AccountsTotal from "./components/AccountsTotal";
 
 function App() {
   return (
@@ -38,17 +26,7 @@ function App() {
             <Stack spacing={6}>
               <AddAccountBox />
               <AccountField />
-              <Box
-                bg="white"
-                border="1px"
-                borderColor="gray.300"
-                borderRadius="2xl"
-                padding="10"
-              >
-                <Text fontSize={20} fontWeight="bold">
-                  Your Projected Earnings
-                </Text>
-              </Box>
+              <AccountsTotal />
             </Stack>
           </GridItem>
         </Grid>
