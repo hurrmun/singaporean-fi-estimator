@@ -7,12 +7,17 @@ import {
   Grid,
   GridItem,
   Input,
+  InputGroup,
+  InputLeftAddon,
   Button,
+  Form,
+  Flex,
 } from "@chakra-ui/react";
 import Header from "./components/Header";
 import Info from "./components/Info";
 import PersonalDetails from "./components/PersonalDetails";
-import AddAccountField from "./components/AddAccountField";
+import AddAccountBox from "./components/AddAccountBox";
+import AccountField from "./components/AccountField";
 
 function App() {
   return (
@@ -31,14 +36,8 @@ function App() {
           </GridItem>
           <GridItem colSpan={2}>
             <Stack spacing={6}>
-              <AddAccountField />
-              <Box
-                bg="white"
-                border="1px"
-                borderColor="gray.300"
-                borderRadius="2xl"
-                padding="10"
-              ></Box>
+              <AddAccountBox />
+              <AccountField />
             </Stack>
           </GridItem>
         </Grid>
