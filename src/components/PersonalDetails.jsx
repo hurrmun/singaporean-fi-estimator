@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Text, Stack, Input } from "@chakra-ui/react";
+import LabelInputGroup from "./LabelInputGroup";
 
 const PersonalDetails = () => {
   return (
@@ -10,20 +11,15 @@ const PersonalDetails = () => {
       borderRadius="2xl"
       padding="10"
     >
-      <Text fontSize="md" fontWeight="bold">
-        Your Details
-      </Text>
-      <Stack marginTop={4}>
-        <Text>Monthly income (before CPF deduction)</Text>
-        <Input />
-      </Stack>
-      <Stack marginTop={4}>
-        <Text>Age</Text>
-        <Input />
-      </Stack>
-      <Stack marginTop={4}>
-        <Text>Expected Monthly Expenditure after Retirement</Text>
-        <Input />
+      <Stack spacing={4}>
+        <Text fontWeight="bold" fontSize={20}>
+          Your Details
+        </Text>
+        <Stack spacing={4}>
+          <LabelInputGroup label="Monthly income (before CPF deduction)" />
+          <LabelInputGroup label="Age" />
+          <LabelInputGroup label="Expected Monthly Expenditure after Retirement" />
+        </Stack>
       </Stack>
     </Box>
   );
