@@ -16,9 +16,9 @@ const PersonalDetails = () => {
           Your Details
         </Text>
         <Stack spacing={4}>
-          <LabelInputGroup label="Monthly income (before CPF deduction)" />
-          <LabelInputGroup label="Age" />
-          <LabelInputGroup label="Expected Monthly Expenditure after Retirement" />
+          <LabelInputGroup label="Monthly income before CPF deduction ($)" />
+          <LabelInputGroup label="Age (years)" />
+          <LabelInputGroup label="Investment Horizon (years)" />
         </Stack>
       </Stack>
     </Box>

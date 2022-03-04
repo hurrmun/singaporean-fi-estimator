@@ -10,12 +10,13 @@ const Info = () => {
       borderRadius="2xl"
       padding="10"
     >
-      <Text fontSize="md">
-        In recognition of this generous gift, the Discovery Hub at SIT’s future
-        campus in Punggol will be named the Chua Thian Poh Discovery Hub. In the
-        interim, before the Punggol Campus is operational, the Student
-        Activities Centre at SIT’s current campus in Dover will be named the
-        Chua Thian Poh Student Activities Centre.
+      <Text fontSize="18">
+        As Singaporeans start to embark on their financial journey, it could
+        help if there was some sort of roadmap to visualise the potential
+        earning in X years. Having a visual representation of data catering to a
+        typical Singaporeans' retirement vehicles can greatly aid in
+        understanding where your money goes to, as well as assist in
+        understanding delayed gratification when trying to save for retirement.
       </Text>
     </Box>
   );
