@@ -7,6 +7,7 @@ import AddAccountBox from "./components/AddAccountBox";
 import AccountField from "./components/AccountField";
 import AccountsTotal from "./components/AccountsTotal";
 import ProjectedCPF from "./components/ProjectedCPF";
+import NetWorth from "./NetWorth";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Stack spacing={6}>
               <PersonalDetails />
               <ProjectedCPF />
+              <NetWorth />
             </Stack>
           </GridItem>
           <GridItem colSpan={2}>
