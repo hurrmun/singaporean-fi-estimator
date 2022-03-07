@@ -22,7 +22,7 @@ const PersonalDetails = () => {
           <LabelInputGroup label="Age (years)" />
           <LabelInputGroup label="Investment Horizon (years)" />
           <Stack spacing={4}>
-            <Text>Do you contribute to CPF</Text>
+            <Text>Do you contribute to CPF as an employee</Text>
             <RadioGroup onChange={setValue} value={value} colorScheme="teal">
               <Stack direction="row" spacing={4}>
                 <Radio value="yes">Yes</Radio>
