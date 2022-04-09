@@ -1,5 +1,4 @@
-import { Box, Input, Text, Stack } from "@chakra-ui/react";
-import AddAccountButton from "./AddAccountButton";
+import { Box, Input, Text, Stack, Button } from "@chakra-ui/react";
 
 const AddAccountBox = () => {
   return (
@@ -15,7 +14,15 @@ const AddAccountBox = () => {
           Account Name
         </Text>
         <Input placeholder="e.g Investent Account" />
-        <AddAccountButton />
+        <Button
+          isFullWidth
+          colorScheme="teal"
+          fontSize={18}
+          paddingY={6}
+          variant="outline"
+        >
+          + Add New Investent / Savings Account
+        </Button>
       </Stack>
     </Box>
   );

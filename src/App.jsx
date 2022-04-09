@@ -1,5 +1,12 @@
 import "./App.css";
-import { Container, Stack, Text, Box, Grid, GridItem } from "@chakra-ui/react";
+import {
+  Container,
+  Stack,
+  Box,
+  Grid,
+  GridItem,
+  Button,
+} from "@chakra-ui/react";
 import Header from "./components/Header";
 import Info from "./components/Info";
 import PersonalDetails from "./components/PersonalDetails";
@@ -32,6 +39,9 @@ function App() {
             <Stack spacing={6}>
               <AddAccountBox />
               <AccountField />
+              <Button isFullWidth colorScheme="teal" fontSize={18} paddingY={6}>
+                Calculate Investments
+              </Button>
               <AccountsTotal />
             </Stack>
           </GridItem>

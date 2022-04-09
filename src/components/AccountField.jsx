@@ -1,4 +1,4 @@
-import { Box, Stack, Flex, Text, Button, Input } from "@chakra-ui/react";
+import { Box, Stack, Flex, Text, Button } from "@chakra-ui/react";
 import LabelInputGroup from "./LabelInputGroup";
 
 const AccountField = () => {
@@ -19,9 +19,12 @@ const AccountField = () => {
         </Flex>
 
         <Stack spacing={4}>
-          <LabelInputGroup label="Initial Amount ($)" />
-          <LabelInputGroup label="Monthly Deposit ($)" />
-          <LabelInputGroup label="Projected Annual Interest (%)" />
+          <LabelInputGroup name="initialAmount" label="Initial Amount ($)" />
+          <LabelInputGroup name="monthlyDeposit" label="Monthly Deposit ($)" />
+          <LabelInputGroup
+            name="annualInterest"
+            label="Projected Annual Interest (%)"
+          />
         </Stack>
       </Stack>
     </Box>
