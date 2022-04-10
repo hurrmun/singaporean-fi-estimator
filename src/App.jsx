@@ -7,7 +7,13 @@ import {
   GridItem,
   Button,
 } from "@chakra-ui/react";
-import { useForm, FormProvider, useFormContext } from "react-hook-form";
+import {
+  useForm,
+  FormProvider,
+  useFormContext,
+  useFieldArray,
+  Controller,
+} from "react-hook-form";
 import Header from "./components/Header";
 import Info from "./components/Info";
 import PersonalDetails from "./components/PersonalDetails";
@@ -18,7 +24,13 @@ import AccountsTotal from "./components/AccountsTotal";
 import NetWorth from "./NetWorth";
 
 function App() {
+  const { control, register } = useForm();
   const methods = useForm();
+
+  const { fields, remove } = useFieldArray({
+    control,
+    name: "account",
+  });
 
   const onSubmit = (data) => {
     console.log(data);
@@ -47,7 +59,7 @@ function App() {
               <GridItem colSpan={2}>
                 <Stack spacing={6}>
                   <AddAccountBox />
-                  {/* <AccountField /> */}
+
                   <Button
                     isFullWidth
                     colorScheme="teal"
