@@ -3,7 +3,7 @@ import { Box, Text, Stack, Radio, RadioGroup, Button } from "@chakra-ui/react";
 import LabelInputGroup from "./LabelInputGroup";
 
 const PersonalDetails = () => {
-  const [value, setValue] = React.useState("yes");
+  // const [value, setValue] = React.useState("yes");
 
   return (
     <>
@@ -19,16 +19,17 @@ const PersonalDetails = () => {
             Your Details
           </Text>
           <Stack spacing={4}>
-            <LabelInputGroup
+            {/* <LabelInputGroup
               name="monthlyIncome"
               label="Monthly income before CPF deduction ($)"
             />
-            <LabelInputGroup name="age" label="Age (years)" />
+            <LabelInputGroup name="age" label="Age (years)" /> */}
             <LabelInputGroup
               name="investmentHorizon"
               label="Investment Horizon (years)"
+              placeholder="E.g 20"
             />
-            <Stack spacing={4}>
+            {/* <Stack spacing={4}>
               <Text>Do you contribute to CPF as an employee</Text>
               <RadioGroup onChange={setValue} value={value} colorScheme="teal">
                 <Stack direction="row" spacing={4}>
@@ -36,13 +37,13 @@ const PersonalDetails = () => {
                   <Radio value="no">No</Radio>
                 </Stack>
               </RadioGroup>
-            </Stack>
+            </Stack> */}
           </Stack>
         </Stack>
       </Box>
-      <Button isFullWidth colorScheme="teal" fontSize={18} paddingY={6}>
+      {/* <Button isFullWidth colorScheme="teal" fontSize={18} paddingY={6}>
         Calculate CPF
-      </Button>
+      </Button> */}
     </>
   );
 };

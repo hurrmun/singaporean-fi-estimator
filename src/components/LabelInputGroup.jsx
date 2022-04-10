@@ -1,15 +1,30 @@
 import { Box, Text, Input } from "@chakra-ui/react";
-import { useForm, Controller } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 
 const LabelInputGroup = (props) => {
-  const { control } = useForm();
+  const { control } = useFormContext();
+
   return (
     <Box>
       <Text>{props.label}</Text>
       <Controller
         name={props.name}
         control={control}
-        render={({ field }) => <Input marginTop={2} />}
+        render={({
+          field: { onChange, onBlur, value, name, ref },
+          fieldState: { invalid, isTouched, isDirty, error },
+          formState,
+        }) => (
+          <Input
+            marginTop={2}
+            placeholder={props.placeholder}
+            name={name}
+            onChange={onChange}
+            onBlur={onBlur}
+            // inputRef={ref}
+            // {...props}
+          />
+        )}
       />
     </Box>
   );

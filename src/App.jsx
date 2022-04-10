@@ -7,45 +7,62 @@ import {
   GridItem,
   Button,
 } from "@chakra-ui/react";
+import { useForm, FormProvider, useFormContext } from "react-hook-form";
 import Header from "./components/Header";
 import Info from "./components/Info";
 import PersonalDetails from "./components/PersonalDetails";
 import AddAccountBox from "./components/AddAccountBox";
 import AccountField from "./components/AccountField";
 import AccountsTotal from "./components/AccountsTotal";
-import ProjectedCPF from "./components/ProjectedCPF";
+// import ProjectedCPF from "./components/ProjectedCPF";
 import NetWorth from "./NetWorth";
 
 function App() {
+  const methods = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <Box textAlign="center" bg="gray.50" minH="100vh" color="gray.900">
       <Header />
       <Container maxW="container.xl">
         <Info />
-        <Grid
-          templateColumns="repeat(3, 1fr)"
-          gap={6}
-          marginTop={10}
-          textAlign="left"
-        >
-          <GridItem>
-            <Stack spacing={6}>
-              <PersonalDetails />
-              <ProjectedCPF />
-              <NetWorth />
-            </Stack>
-          </GridItem>
-          <GridItem colSpan={2}>
-            <Stack spacing={6}>
-              <AddAccountBox />
-              <AccountField />
-              <Button isFullWidth colorScheme="teal" fontSize={18} paddingY={6}>
-                Calculate Investments
-              </Button>
-              <AccountsTotal />
-            </Stack>
-          </GridItem>
-        </Grid>
+        <FormProvider {...methods}>
+          <form onSubmit={methods.handleSubmit(onSubmit)}>
+            <Grid
+              templateColumns="repeat(3, 1fr)"
+              gap={6}
+              marginTop={10}
+              textAlign="left"
+            >
+              <GridItem>
+                <Stack spacing={6}>
+                  <PersonalDetails />
+                  {/* <ProjectedCPF /> */}
+                  <NetWorth />
+                </Stack>
+              </GridItem>
+              <GridItem colSpan={2}>
+                <Stack spacing={6}>
+                  <AddAccountBox />
+                  {/* <AccountField /> */}
+                  <Button
+                    isFullWidth
+                    colorScheme="teal"
+                    fontSize={18}
+                    paddingY={6}
+                    type="submit"
+                  >
+                    Calculate Investments
+                  </Button>
+                  {/* <AccountsTotal /> */}
+                </Stack>
+              </GridItem>
+            </Grid>
+          </form>
+        </FormProvider>
       </Container>
     </Box>
   );

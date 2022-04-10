@@ -20,6 +20,7 @@ const AddAccountBox = () => {
           fontSize={18}
           paddingY={6}
           variant="outline"
+          type="submit"
         >
           + Add New Investent / Savings Account
         </Button>
