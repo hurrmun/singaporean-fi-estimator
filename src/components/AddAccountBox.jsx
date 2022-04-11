@@ -68,6 +68,7 @@ const AddAccountBox = () => {
       {/* TODO make the Account Field component take in the name from above and changes to it will affect the form state */}
       {fields.map((item, index) => (
         <Box
+          key={item.id}
           bg="white"
           border="1px"
           borderColor="gray.300"
