@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { Box, Input, Text, Stack, Button } from "@chakra-ui/react";
-import {
-  useForm,
-  useFormContext,
-  useFieldArray,
-  Controller,
-} from "react-hook-form";
+import { useFormContext, useFieldArray } from "react-hook-form";
 import AccountField from "./AccountField";
 
 const AddAccountBox = () => {
@@ -13,7 +8,7 @@ const AddAccountBox = () => {
 
   const handleChange = (event) => setAccountName(event.target.value);
 
-  const { register, control } = useFormContext({
+  const { control } = useFormContext({
     defaultValues: {
       account: [
         {
@@ -25,7 +20,7 @@ const AddAccountBox = () => {
       ],
     },
   });
-  const { fields, append, remove } = useFieldArray({
+  const { fields, append } = useFieldArray({
     control,
     name: "account",
   });
@@ -69,7 +64,7 @@ const AddAccountBox = () => {
       </Box>
       {/* TODO make the Account Field component take in the name from above and changes to it will affect the form state */}
       {fields.map((item, index) => (
-        <AccountField key={item.id} />
+        <AccountField key={item.id} index={index} />
       ))}
     </>
   );
