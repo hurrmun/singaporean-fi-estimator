@@ -5,10 +5,12 @@ import LabelInputGroup from "./LabelInputGroup";
 const AccountField = ({ index }) => {
   const { control } = useFormContext();
 
-  const { remove } = useFieldArray({
+  const { fields, remove } = useFieldArray({
     control,
     name: "account",
   });
+
+  console.log(fields);
 
   return (
     <Box
@@ -21,9 +23,9 @@ const AccountField = ({ index }) => {
       <Stack spacing={4}>
         <Flex justifyContent="space-between" alignItems="center">
           <Text fontWeight="bold" fontSize={20}>
-            Investment Account
+            {fields?.[index]?.name}
           </Text>
-          <Button onClick={() => remove(index)} colorScheme="red">
+          <Button type="button" onClick={() => remove(index)} colorScheme="red">
             Delete
           </Button>
         </Flex>
