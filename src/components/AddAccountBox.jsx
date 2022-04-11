@@ -13,9 +13,9 @@ const AddAccountBox = () => {
       account: [
         {
           name: "New Account",
-          initialAmount: 0,
-          monthlyDeposit: 0,
-          interest: 0,
+          initialAmount: "",
+          monthlyDeposit: "",
+          interest: "",
         },
       ],
     },
@@ -27,7 +27,7 @@ const AddAccountBox = () => {
 
   const handleAddAcount = () => {
     append({
-      name: accountName,
+      name: accountName ? accountName : "New Account",
       initialAmount: "",
       monthlyDeposit: "",
       interest: "",
