@@ -1,9 +1,24 @@
 import React from "react";
-import { Box, Text, Stack, Radio, RadioGroup, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Stack,
+  Input,
+  Radio,
+  RadioGroup,
+  Button,
+} from "@chakra-ui/react";
+import { Controller, useFormContext } from "react-hook-form";
 import LabelInputGroup from "./LabelInputGroup";
 
 const PersonalDetails = () => {
   // const [value, setValue] = React.useState("yes");
+
+  const { control } = useFormContext({
+    defaultValues: {
+      investmentHorizon: 0,
+    },
+  });
 
   return (
     <>
@@ -24,11 +39,16 @@ const PersonalDetails = () => {
               label="Monthly income before CPF deduction ($)"
             />
             <LabelInputGroup name="age" label="Age (years)" /> */}
-            <LabelInputGroup
-              name="investmentHorizon"
-              label="Investment Horizon (years)"
-              placeholder="E.g 20"
-            />
+            <Box>
+              <Text>Investment Horizon (years)</Text>
+              <Controller
+                name="investmentHorizon"
+                control={control}
+                render={({ field }) => (
+                  <Input {...field} marginTop={2} placeholder="E.g 20" />
+                )}
+              />
+            </Box>
             {/* <Stack spacing={4}>
               <Text>Do you contribute to CPF as an employee</Text>
               <RadioGroup onChange={setValue} value={value} colorScheme="teal">
