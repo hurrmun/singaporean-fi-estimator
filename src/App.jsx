@@ -24,13 +24,7 @@ import AccountsTotal from "./components/AccountsTotal";
 import NetWorth from "./NetWorth";
 
 function App() {
-  const { control, register } = useForm();
   const methods = useForm();
-
-  const { fields, remove } = useFieldArray({
-    control,
-    name: "account",
-  });
 
   const onSubmit = (data) => {
     console.log(data);
@@ -59,7 +53,6 @@ function App() {
               <GridItem colSpan={2}>
                 <Stack spacing={6}>
                   <AddAccountBox />
-
                   <Button
                     isFullWidth
                     colorScheme="teal"

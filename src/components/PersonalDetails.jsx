@@ -9,14 +9,13 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { Controller, useFormContext } from "react-hook-form";
-import LabelInputGroup from "./LabelInputGroup";
 
 const PersonalDetails = () => {
   // const [value, setValue] = React.useState("yes");
 
   const { control } = useFormContext({
     defaultValues: {
-      investmentHorizon: 0,
+      investmentHorizon: "",
     },
   });
 
@@ -44,6 +43,7 @@ const PersonalDetails = () => {
               <Controller
                 name="investmentHorizon"
                 control={control}
+                defaultValue=""
                 render={({ field }) => (
                   <Input {...field} marginTop={2} placeholder="E.g 20" />
                 )}
