@@ -45,7 +45,12 @@ const PersonalDetails = () => {
                 control={control}
                 defaultValue=""
                 render={({ field }) => (
-                  <Input {...field} marginTop={2} placeholder="E.g 20" />
+                  <Input
+                    {...field}
+                    marginTop={2}
+                    placeholder="E.g 20"
+                    type="number"
+                  />
                 )}
               />
             </Box>

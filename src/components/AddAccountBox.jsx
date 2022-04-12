@@ -100,6 +100,7 @@ const AddAccountBox = () => {
                       {...field}
                       marginTop={2}
                       placeholder="Initial Amount"
+                      type="number"
                     />
                   </Box>
                 )}
@@ -110,7 +111,12 @@ const AddAccountBox = () => {
                 render={({ field }) => (
                   <Box>
                     <Text>Monthly Deposit ($)</Text>
-                    <Input {...field} marginTop={2} placeholder="E.g 100" />
+                    <Input
+                      {...field}
+                      marginTop={2}
+                      placeholder="E.g 100"
+                      type="number"
+                    />
                   </Box>
                 )}
               />
@@ -120,7 +126,12 @@ const AddAccountBox = () => {
                 render={({ field }) => (
                   <Box>
                     <Text>Projected Annual Interest (%)</Text>
-                    <Input {...field} marginTop={2} placeholder="E.g 4" />
+                    <Input
+                      {...field}
+                      marginTop={2}
+                      placeholder="E.g 4"
+                      type="number"
+                    />
                   </Box>
                 )}
               />
