@@ -2,12 +2,14 @@ import * as yup from "yup";
 
 const accountSchema = yup.object().shape({
   name: yup.string().required("Please enter your investment horizon"),
-  initalAmount: yup
+  initialAmount: yup
     .number()
+    .typeError("Amount must be a number")
     .round("round")
     .required("Please enter your initial amount"),
   monthlyDeposit: yup
     .number()
+    .typeError("Amount must be a number")
     .round("round")
     .required("Please enter your monthly deposit"),
   interest: yup
@@ -19,7 +21,8 @@ const accountSchema = yup.object().shape({
 export const formSchema = yup.object().shape({
   investmentHorizon: yup
     .number()
-    .positive()
+    .typeError("Amount must be a number")
+    .positive("Please enter a positive value")
     .required("Please enter your invesment horizon"),
   accounts: yup
     .array()

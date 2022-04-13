@@ -8,16 +8,17 @@ import {
   RadioGroup,
   Button,
 } from "@chakra-ui/react";
+import { formSchema } from "./FormValidation";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useFormContext } from "react-hook-form";
 
 const PersonalDetails = () => {
   // const [value, setValue] = React.useState("yes");
 
-  const { control } = useFormContext({
-    defaultValues: {
-      investmentHorizon: "",
-    },
-  });
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext();
 
   return (
     <>
@@ -53,6 +54,11 @@ const PersonalDetails = () => {
                   />
                 )}
               />
+              {errors?.investmentHorizon && (
+                <Text color="red.500">
+                  {errors?.investmentHorizon?.message}
+                </Text>
+              )}
             </Box>
             {/* <Stack spacing={4}>
               <Text>Do you contribute to CPF as an employee</Text>

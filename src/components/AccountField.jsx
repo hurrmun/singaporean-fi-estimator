@@ -1,6 +1,5 @@
 import { Box, Stack, Flex, Text, Button, Input } from "@chakra-ui/react";
 import { Controller, useFormContext, useFieldArray } from "react-hook-form";
-import LabelInputGroup from "./LabelInputGroup";
 
 const AccountField = ({ index }) => {
   const { control } = useFormContext();

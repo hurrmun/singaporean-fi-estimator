@@ -1,28 +1,23 @@
 import { useState } from "react";
 import { Box, Input, Text, Stack, Button, Flex } from "@chakra-ui/react";
 import { useFormContext, useFieldArray, Controller } from "react-hook-form";
-import AccountField from "./AccountField";
+// import AccountField from "./AccountField";
 
 const AddAccountBox = () => {
   const [accountName, setAccountName] = useState("");
 
   const handleChange = (event) => setAccountName(event.target.value);
 
-  const { control } = useFormContext({
-    defaultValues: {
-      account: [
-        {
-          name: "New Account",
-          initialAmount: "",
-          monthlyDeposit: "",
-          interest: "",
-        },
-      ],
-    },
-  });
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext();
+
+  console.log("errors", errors);
+
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "account",
+    name: "accounts",
   });
 
   const handleAddAcount = () => {
@@ -92,7 +87,7 @@ const AddAccountBox = () => {
             <Stack spacing={4}>
               <Controller
                 control={control}
-                name={`account.${index}.initialAmount`}
+                name={`accounts.${index}.initialAmount`}
                 render={({ field }) => (
                   <Box>
                     <Text>Initial Amount ($)</Text>
@@ -105,9 +100,14 @@ const AddAccountBox = () => {
                   </Box>
                 )}
               />
+              {errors?.accounts?.[index]?.initialAmount && (
+                <Text color="red.500">
+                  {errors?.accounts?.[index]?.initialAmount?.message}
+                </Text>
+              )}
               <Controller
                 control={control}
-                name={`account.${index}.monthlyDeposit`}
+                name={`accounts.${index}.monthlyDeposit`}
                 render={({ field }) => (
                   <Box>
                     <Text>Monthly Deposit ($)</Text>
@@ -120,9 +120,14 @@ const AddAccountBox = () => {
                   </Box>
                 )}
               />
+              {errors?.accounts?.[index]?.monthlyDeposit && (
+                <Text color="red.500">
+                  {errors?.accounts?.[index]?.monthlyDeposit?.message}
+                </Text>
+              )}
               <Controller
                 control={control}
-                name={`account.${index}.interest`}
+                name={`accounts.${index}.interest`}
                 render={({ field }) => (
                   <Box>
                     <Text>Projected Annual Interest (%)</Text>
@@ -135,6 +140,11 @@ const AddAccountBox = () => {
                   </Box>
                 )}
               />
+              {errors?.accounts?.[index]?.interest && (
+                <Text color="red.500">
+                  {errors?.accounts?.[index]?.interest?.message}
+                </Text>
+              )}
             </Stack>
           </Stack>
         </Box>

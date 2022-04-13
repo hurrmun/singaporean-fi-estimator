@@ -7,13 +7,10 @@ import {
   GridItem,
   Button,
 } from "@chakra-ui/react";
-import {
-  useForm,
-  FormProvider,
-  useFormContext,
-  useFieldArray,
-  Controller,
-} from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
+import { formSchema } from "./components/FormValidation";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import Header from "./components/Header";
 import Info from "./components/Info";
 import PersonalDetails from "./components/PersonalDetails";
@@ -24,7 +21,13 @@ import AccountsTotal from "./components/AccountsTotal";
 import NetWorth from "./NetWorth";
 
 function App() {
-  const methods = useForm();
+  const methods = useForm({
+    defaultValues: {
+      investmentHorizon: "",
+      accounts: [],
+    },
+    resolver: yupResolver(formSchema),
+  });
 
   const onSubmit = (data) => {
     console.log(data);
