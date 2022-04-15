@@ -30,8 +30,10 @@ function App() {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    console.log("data", data);
   };
+
+  const onError = (errors, e) => console.log("errors", errors, e);
 
   return (
     <Box textAlign="center" bg="gray.50" minH="100vh" color="gray.900">
@@ -39,7 +41,7 @@ function App() {
       <Container maxW="container.xl">
         <Info />
         <FormProvider {...methods}>
-          <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <form onSubmit={methods.handleSubmit(onSubmit, onError)}>
             <Grid
               templateColumns="repeat(3, 1fr)"
               gap={6}
@@ -65,7 +67,7 @@ function App() {
                   >
                     Calculate Investments
                   </Button>
-                  {/* <AccountsTotal /> */}
+                  <AccountsTotal />
                 </Stack>
               </GridItem>
             </Grid>

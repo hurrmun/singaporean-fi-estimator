@@ -4,12 +4,15 @@ import {
   Text,
   Stack,
   Input,
-  Radio,
-  RadioGroup,
-  Button,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+  // Radio,
+  // RadioGroup,
+  // Button,
 } from "@chakra-ui/react";
-import { formSchema } from "./FormValidation";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useFormContext } from "react-hook-form";
 
 const PersonalDetails = () => {
@@ -46,12 +49,25 @@ const PersonalDetails = () => {
                 control={control}
                 defaultValue=""
                 render={({ field }) => (
-                  <Input
+                  <NumberInput
                     {...field}
                     marginTop={2}
-                    placeholder="E.g 20"
-                    type="number"
-                  />
+                    defaultValue={1}
+                    max={100}
+                    precision={0}
+                  >
+                    <NumberInputField />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper />
+                      <NumberDecrementStepper />
+                    </NumberInputStepper>
+                  </NumberInput>
+                  // <Input
+                  //   {...field}
+                  //   marginTop={2}
+                  //   placeholder="E.g 20"
+                  //   type="number"
+                  // />
                 )}
               />
               {errors?.investmentHorizon && (

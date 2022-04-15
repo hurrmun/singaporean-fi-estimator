@@ -1,5 +1,17 @@
 import { useState } from "react";
-import { Box, Input, Text, Stack, Button, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Input,
+  Text,
+  Stack,
+  Button,
+  Flex,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+} from "@chakra-ui/react";
 import { useFormContext, useFieldArray, Controller } from "react-hook-form";
 // import AccountField from "./AccountField";
 
@@ -12,8 +24,6 @@ const AddAccountBox = () => {
     control,
     formState: { errors },
   } = useFormContext();
-
-  console.log("errors", errors);
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -60,6 +70,9 @@ const AddAccountBox = () => {
           </Button>
         </Stack>
       </Box>
+      {errors?.accounts && (
+        <Text color="red.500">{errors?.accounts?.message}</Text>
+      )}
       {/* TODO make the Account Field component take in the name from above and changes to it will affect the form state */}
       {fields.map((item, index) => (
         <Box
@@ -85,66 +98,87 @@ const AddAccountBox = () => {
             </Flex>
 
             <Stack spacing={4}>
-              <Controller
-                control={control}
-                name={`accounts.${index}.initialAmount`}
-                render={({ field }) => (
-                  <Box>
-                    <Text>Initial Amount ($)</Text>
-                    <Input
+              <Box>
+                <Text>Initial Amount ($)</Text>
+                <Controller
+                  control={control}
+                  name={`accounts.${index}.initialAmount`}
+                  render={({ field }) => (
+                    <NumberInput
                       {...field}
                       marginTop={2}
-                      placeholder="Initial Amount"
-                      type="number"
-                    />
-                  </Box>
+                      defaultValue={0}
+                      precision={2}
+                      step={100}
+                    >
+                      <NumberInputField />
+                      <NumberInputStepper>
+                        <NumberIncrementStepper />
+                        <NumberDecrementStepper />
+                      </NumberInputStepper>
+                    </NumberInput>
+                  )}
+                />
+                {errors?.accounts?.[index]?.initialAmount && (
+                  <Text color="red.500">
+                    {errors?.accounts?.[index]?.initialAmount?.message}
+                  </Text>
                 )}
-              />
-              {errors?.accounts?.[index]?.initialAmount && (
-                <Text color="red.500">
-                  {errors?.accounts?.[index]?.initialAmount?.message}
-                </Text>
-              )}
-              <Controller
-                control={control}
-                name={`accounts.${index}.monthlyDeposit`}
-                render={({ field }) => (
-                  <Box>
-                    <Text>Monthly Deposit ($)</Text>
-                    <Input
+              </Box>
+              <Box>
+                <Text>Monthly Deposit ($)</Text>
+                <Controller
+                  control={control}
+                  name={`accounts.${index}.monthlyDeposit`}
+                  render={({ field }) => (
+                    <NumberInput
                       {...field}
                       marginTop={2}
-                      placeholder="E.g 100"
-                      type="number"
-                    />
-                  </Box>
+                      defaultValue={0}
+                      precision={2}
+                      step={100}
+                    >
+                      <NumberInputField />
+                      <NumberInputStepper>
+                        <NumberIncrementStepper />
+                        <NumberDecrementStepper />
+                      </NumberInputStepper>
+                    </NumberInput>
+                  )}
+                />
+                {errors?.accounts?.[index]?.monthlyDeposit && (
+                  <Text color="red.500">
+                    {errors?.accounts?.[index]?.monthlyDeposit?.message}
+                  </Text>
                 )}
-              />
-              {errors?.accounts?.[index]?.monthlyDeposit && (
-                <Text color="red.500">
-                  {errors?.accounts?.[index]?.monthlyDeposit?.message}
-                </Text>
-              )}
-              <Controller
-                control={control}
-                name={`accounts.${index}.interest`}
-                render={({ field }) => (
-                  <Box>
-                    <Text>Projected Annual Interest (%)</Text>
-                    <Input
+              </Box>
+              <Box>
+                <Text>Projected Annual Interest (%)</Text>
+                <Controller
+                  control={control}
+                  name={`accounts.${index}.interest`}
+                  render={({ field }) => (
+                    <NumberInput
                       {...field}
                       marginTop={2}
-                      placeholder="E.g 4"
-                      type="number"
-                    />
-                  </Box>
+                      defaultValue={0}
+                      precision={0}
+                      step={1}
+                    >
+                      <NumberInputField />
+                      <NumberInputStepper>
+                        <NumberIncrementStepper />
+                        <NumberDecrementStepper />
+                      </NumberInputStepper>
+                    </NumberInput>
+                  )}
+                />
+                {errors?.accounts?.[index]?.interest && (
+                  <Text color="red.500">
+                    {errors?.accounts?.[index]?.interest?.message}
+                  </Text>
                 )}
-              />
-              {errors?.accounts?.[index]?.interest && (
-                <Text color="red.500">
-                  {errors?.accounts?.[index]?.interest?.message}
-                </Text>
-              )}
+              </Box>
             </Stack>
           </Stack>
         </Box>
