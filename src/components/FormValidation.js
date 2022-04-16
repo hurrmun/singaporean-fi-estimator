@@ -2,10 +2,7 @@ import * as yup from "yup";
 
 const accountSchema = yup.object().shape({
   name: yup.string().required("Please enter your investment horizon"),
-  initialAmount: yup
-    .number()
-    .typeError("Initial amount must be a number")
-    .required("Please enter your initial amount"),
+  initialAmount: yup.number().typeError("Initial amount must be a number"),
   monthlyDeposit: yup
     .number()
     .typeError("Monthly deposit must be a number")

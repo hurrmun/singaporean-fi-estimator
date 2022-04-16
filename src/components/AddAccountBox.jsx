@@ -162,7 +162,7 @@ const AddAccountBox = () => {
                       {...field}
                       marginTop={2}
                       defaultValue={0}
-                      precision={0}
+                      precision={2}
                       step={1}
                     >
                       <NumberInputField />
