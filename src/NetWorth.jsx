@@ -1,4 +1,5 @@
 import { Box, Stack, Text, Flex } from "@chakra-ui/react";
+import numeral from "numeral";
 
 const NetWorth = ({ accounts, investmentHorizon }) => {
   console.log("accounts", accounts);
@@ -37,7 +38,10 @@ const NetWorth = ({ accounts, investmentHorizon }) => {
           <Flex>
             <Text key={index}>{item.name}:&nbsp;</Text>
             <Text fontWeight="bold">
-              {calculateAccount(item)[investmentHorizon - 1]}
+              $
+              {numeral(calculateAccount(item)[investmentHorizon - 1]).format(
+                "0,0.00"
+              )}
             </Text>
           </Flex>
         ))}
