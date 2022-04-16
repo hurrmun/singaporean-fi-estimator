@@ -1,4 +1,3 @@
-import "./App.css";
 import {
   Container,
   Stack,
@@ -7,6 +6,7 @@ import {
   GridItem,
   Button,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { formSchema } from "./components/FormValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -21,6 +21,9 @@ import AccountsTotal from "./components/AccountsTotal";
 import NetWorth from "./NetWorth";
 
 function App() {
+  const [accounts, setAccounts] = useState([]);
+  const [investmentHorizon, setInvestmentHorizon] = useState(0);
+
   const methods = useForm({
     defaultValues: {
       investmentHorizon: "",
@@ -30,6 +33,8 @@ function App() {
   });
 
   const onSubmit = (data) => {
+    setAccounts(data.accounts);
+    setInvestmentHorizon(data.investmentHorizon);
     console.log("data", data);
   };
 
@@ -52,7 +57,10 @@ function App() {
                 <Stack spacing={6}>
                   <PersonalDetails />
                   {/* <ProjectedCPF /> */}
-                  <NetWorth />
+                  <NetWorth
+                    accounts={accounts}
+                    investmentHorizon={investmentHorizon}
+                  />
                 </Stack>
               </GridItem>
               <GridItem colSpan={2}>

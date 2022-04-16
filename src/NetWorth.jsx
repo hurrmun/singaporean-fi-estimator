@@ -1,6 +1,26 @@
-import { Box, Stack, Text } from "@chakra-ui/react";
+import { Box, Stack, Text, Flex } from "@chakra-ui/react";
 
-const NetWorth = () => {
+const NetWorth = ({ accounts, investmentHorizon }) => {
+  console.log("accounts", accounts);
+
+  const calculateAccount = (account) => {
+    const yearMap = [];
+    let currentValue = account.initialAmount * 100;
+    console.log("before", currentValue);
+    for (let i = 0; i < investmentHorizon; i++) {
+      let endOfYear = account.monthlyDeposit * 100 * 12 + currentValue;
+      currentValue = Math.round(
+        endOfYear + (account.interest / 100) * endOfYear
+      );
+      console.log("curent", currentValue);
+      yearMap.push(currentValue / 100);
+    }
+    console.log(yearMap);
+    return yearMap;
+  };
+
+  accounts.forEach((item) => calculateAccount(item));
+
   return (
     <Box
       bg="white"
@@ -13,8 +33,15 @@ const NetWorth = () => {
         <Text fontWeight="bold" fontSize={20}>
           Total Net Worth
         </Text>
-        <Text>CPF: $300</Text>
-        <Text>Retirement Accounts: $10,000</Text>
+        {accounts.map((item, index) => (
+          <Flex>
+            <Text key={index}>{item.name}:&nbsp;</Text>
+            <Text fontWeight="bold">
+              {calculateAccount(item)[investmentHorizon - 1]}
+            </Text>
+          </Flex>
+        ))}
+
         <Text fontWeight="bold">Total: $10,300</Text>
       </Stack>
     </Box>
