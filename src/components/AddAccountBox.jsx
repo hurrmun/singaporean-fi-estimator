@@ -11,8 +11,11 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
+  IconButton,
+  HStack,
 } from "@chakra-ui/react";
 import { useFormContext, useFieldArray, Controller } from "react-hook-form";
+import { FaTrash, FaPlus } from "react-icons/fa";
 // import AccountField from "./AccountField";
 
 const AddAccountBox = () => {
@@ -60,13 +63,16 @@ const AddAccountBox = () => {
           />
           <Button
             isFullWidth
-            colorScheme="teal"
+            colorScheme="green"
             fontSize={18}
             paddingY={6}
             variant="outline"
             onClick={handleAddAcount}
           >
-            + Add New Investent / Savings Account
+            <HStack>
+              <FaPlus />
+              <Text>Add New Investent / Savings Account</Text>
+            </HStack>
           </Button>
         </Stack>
       </Box>
@@ -88,13 +94,21 @@ const AddAccountBox = () => {
               <Text fontWeight="bold" fontSize={20}>
                 {fields?.[index]?.name}
               </Text>
-              <Button
+              {/* <Button
                 type="button"
                 onClick={() => remove(index)}
                 colorScheme="red"
               >
                 Delete
-              </Button>
+              </Button> */}
+              <IconButton
+                colorScheme="red"
+                onClick={() => remove(index)}
+                aria-label="Delete Account"
+                type="button"
+                icon={<FaTrash />}
+                variant="outline"
+              />
             </Flex>
 
             <Stack spacing={4}>
@@ -110,6 +124,10 @@ const AddAccountBox = () => {
                       defaultValue={0}
                       precision={2}
                       step={100}
+                      errorBorderColor="red.300"
+                      isInvalid={Boolean(
+                        errors?.accounts?.[index]?.initialAmount
+                      )}
                     >
                       <NumberInputField />
                       <NumberInputStepper>
@@ -137,6 +155,10 @@ const AddAccountBox = () => {
                       defaultValue={0}
                       precision={2}
                       step={100}
+                      errorBorderColor="red.300"
+                      isInvalid={Boolean(
+                        errors?.accounts?.[index]?.monthlyDeposit
+                      )}
                     >
                       <NumberInputField />
                       <NumberInputStepper>
@@ -164,6 +186,8 @@ const AddAccountBox = () => {
                       defaultValue={0}
                       precision={2}
                       step={1}
+                      errorBorderColor="red.300"
+                      isInvalid={Boolean(errors?.accounts?.[index]?.interest)}
                     >
                       <NumberInputField />
                       <NumberInputStepper>

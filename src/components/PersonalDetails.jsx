@@ -55,6 +55,8 @@ const PersonalDetails = () => {
                     defaultValue={1}
                     max={100}
                     precision={0}
+                    errorBorderColor="red.300"
+                    isInvalid={Boolean(errors?.investmentHorizon)}
                   >
                     <NumberInputField />
                     <NumberInputStepper>
