@@ -54,7 +54,7 @@ const AddAccountBox = () => {
       >
         <Stack spacing={4}>
           <Text fontWeight="bold" fontSize={20}>
-            Account Name
+            New Account Name
           </Text>
           <Input
             placeholder="e.g Investent Account"
@@ -74,11 +74,11 @@ const AddAccountBox = () => {
               <Text>Add New Investent / Savings Account</Text>
             </HStack>
           </Button>
+          {errors?.accounts && (
+            <Text color="red.500">{errors?.accounts?.message}</Text>
+          )}
         </Stack>
       </Box>
-      {errors?.accounts && (
-        <Text color="red.500">{errors?.accounts?.message}</Text>
-      )}
       {/* TODO make the Account Field component take in the name from above and changes to it will affect the form state */}
       {fields.map((item, index) => (
         <Box
