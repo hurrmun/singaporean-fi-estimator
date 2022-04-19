@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
-import { formSchema } from "./components/FormValidation";
+import { formSchema } from "./FormValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import Header from "./components/Header";
@@ -41,7 +41,7 @@ function App() {
 
   useEffect(() => {
     const calculateAccount = (account) => {
-      const yearMap = [];
+      const yearMap = [account.initialAmount];
       let currentValue = account.initialAmount * 100;
       console.log("before", currentValue);
       for (let i = 0; i < investmentHorizon; i++) {
