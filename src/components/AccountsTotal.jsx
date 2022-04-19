@@ -10,8 +10,60 @@ import {
   Td,
   Tfoot,
 } from "@chakra-ui/react";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
 
-const AccountsTotal = () => {
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top",
+    },
+    title: {
+      display: true,
+      text: "Chart.js Line Chart",
+    },
+  },
+};
+
+const AccountsTotal = ({ yearMap, investmentHorizon }) => {
+  const createLabels = (years) => {
+    const yearArr = [];
+    for (let i = 0; i <= years; i++) {
+      yearArr.push(`Year ${i}`);
+    }
+    return yearArr;
+  };
+
+  const data = {
+    labels: createLabels(investmentHorizon),
+    datasets: yearMap.map((account) => ({
+      label: account.name,
+      data: account.data,
+      borderColor: "rgb(255, 99, 132)",
+      backgroundColor: "rgba(255, 99, 132, 0.5)",
+    })),
+  };
+
   return (
     <Box
       bg="white"
@@ -24,7 +76,17 @@ const AccountsTotal = () => {
         <Text fontSize={20} fontWeight="bold">
           Your Projected Earnings
         </Text>
-        <Table variant="simple">
+        <Box>
+          <Line options={options} data={data} />
+        </Box>
+      </Stack>
+    </Box>
+  );
+};
+
+export default AccountsTotal;
+
+/* <Table variant="simple">
           <Thead>
             <Tr>
               <Th>Account Name</Th>
@@ -53,10 +115,4 @@ const AccountsTotal = () => {
               </Th>
             </Tr>
           </Tfoot>
-        </Table>
-      </Stack>
-    </Box>
-  );
-};
-
-export default AccountsTotal;
+        </Table> */

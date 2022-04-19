@@ -97,7 +97,12 @@ function App() {
                   >
                     Calculate Investments
                   </Button>
-                  <AccountsTotal />
+                  {yearMap.length > 0 && (
+                    <AccountsTotal
+                      yearMap={yearMap}
+                      investmentHorizon={investmentHorizon}
+                    />
+                  )}
                 </Stack>
               </GridItem>
             </Grid>
