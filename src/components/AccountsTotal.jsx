@@ -59,8 +59,8 @@ const AccountsTotal = ({ yearMap, investmentHorizon }) => {
     datasets: yearMap.map((account) => ({
       label: account.name,
       data: account.data,
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
+      borderColor: "#F96F5D",
+      backgroundColor: "#F96F5D",
     })),
   };
 
