@@ -84,8 +84,14 @@ function App() {
   return (
     <Box textAlign="center" bg="gray.50" minH="100vh" color="gray.900">
       <Header />
-      <Container maxW="container.xl">
+      <Container maxW="container.xl" paddingBottom={50}>
         <Info />
+        {yearMap.length > 1 && (
+          <AccountsTotal
+            yearMap={yearMap}
+            investmentHorizon={investmentHorizon}
+          />
+        )}
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit, onError)}>
             <Grid
@@ -109,16 +115,11 @@ function App() {
                     colorScheme="teal"
                     fontSize={18}
                     paddingY={6}
+                    marginBottom={10}
                     type="submit"
                   >
                     Calculate Investments
                   </Button>
-                  {yearMap.length > 0 && (
-                    <AccountsTotal
-                      yearMap={yearMap}
-                      investmentHorizon={investmentHorizon}
-                    />
-                  )}
                 </Stack>
               </GridItem>
             </Grid>

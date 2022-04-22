@@ -8,7 +8,8 @@ const Info = () => {
       color="white"
       boxShadow="lg"
       borderRadius="2xl"
-      padding="10"
+      padding={10}
+      marginBottom={10}
     >
       <Text fontSize="18">
         As Singaporeans start to embark on their financial journey, it could
