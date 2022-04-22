@@ -23,14 +23,14 @@ const NetWorth = ({ yearMap }) => {
           </Flex>
         ))}
 
-        <Text fontWeight="black" fontSize="lg">
+        {/* <Text fontWeight="black" fontSize="lg">
           Total: $
           {numeral(
             yearMap.reduce((accumulator, item) => {
               return accumulator + item.data[item.data.length - 1];
             }, 0)
           ).format("0,0.00")}
-        </Text>
+        </Text> */}
       </Stack>
     </Box>
   );

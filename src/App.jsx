@@ -45,11 +45,12 @@ function App() {
       let currentValue = account.initialAmount * 100;
       console.log("before", currentValue);
       for (let i = 0; i < investmentHorizon; i++) {
-        let endOfYear = account.monthlyDeposit * 100 * 12 + currentValue;
         currentValue = Math.round(
-          endOfYear + (account.interest / 100) * endOfYear
+          currentValue + (account.interest / 100) * currentValue
         );
-        console.log("curent", currentValue);
+        let yearlyAddition = account.monthlyDeposit * 100 * 12;
+        currentValue += yearlyAddition;
+        // console.log("curent", currentValue);
         yearMap.push(currentValue / 100);
       }
       return yearMap;
