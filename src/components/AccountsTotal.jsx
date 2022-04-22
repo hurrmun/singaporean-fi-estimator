@@ -45,6 +45,12 @@ export const options = {
   },
 };
 
+const generateRandomColor = () => {
+  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  const hexcode = "#" + randomColor;
+  return hexcode;
+};
+
 const AccountsTotal = ({ yearMap, investmentHorizon }) => {
   const createLabels = (years) => {
     const yearArr = [];
@@ -56,12 +62,15 @@ const AccountsTotal = ({ yearMap, investmentHorizon }) => {
 
   const data = {
     labels: createLabels(investmentHorizon),
-    datasets: yearMap.map((account) => ({
-      label: account.name,
-      data: account.data,
-      borderColor: "#F96F5D",
-      backgroundColor: "#F96F5D",
-    })),
+    datasets: yearMap.map((account) => {
+      const randomColor = generateRandomColor();
+      return {
+        label: account.name,
+        data: account.data,
+        borderColor: randomColor,
+        backgroundColor: randomColor,
+      };
+    }),
   };
 
   return (

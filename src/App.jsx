@@ -52,7 +52,6 @@ function App() {
         console.log("curent", currentValue);
         yearMap.push(currentValue / 100);
       }
-      console.log(yearMap);
       return yearMap;
     };
 
@@ -60,6 +59,22 @@ function App() {
       name: account.name,
       data: calculateAccount(account),
     }));
+
+    const calculateTotal = (mappedAcc) => {
+      let total = [];
+      for (let i = 0; i < mappedAcc.length; i++) {
+        for (let j = 0; j < mappedAcc[i].data.length; j++) {
+          total[j] = total[j] + mappedAcc[i].data[j] || mappedAcc[i].data[j];
+        }
+      }
+      return total;
+    };
+
+    mappedAccounts.push({
+      name: "Total",
+      data: calculateTotal(mappedAccounts),
+    });
+
     setYearMap(mappedAccounts);
   }, [accounts, setYearMap, investmentHorizon]);
 
