@@ -42,8 +42,8 @@ function App() {
 
   const scrollToTop = () => {
     scroll.scrollToTop({
-      duration: 1500,
-      smooth: "easeInOutQuint",
+      duration: 1000,
+      smooth: true,
     });
   };
 
@@ -87,6 +87,10 @@ function App() {
     setYearMap(mappedAccounts);
   }, [accounts, setYearMap, investmentHorizon]);
 
+  useEffect(() => {
+    scrollToTop();
+  }, [accounts]);
+
   const onError = (errors, e) => console.log("errors", errors, e);
 
   return (
@@ -125,7 +129,6 @@ function App() {
                     paddingY={6}
                     marginBottom={10}
                     type="submit"
-                    onClick={() => scrollToTop()}
                   >
                     Calculate Investments
                   </Button>

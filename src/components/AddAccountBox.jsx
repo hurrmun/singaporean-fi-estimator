@@ -27,8 +27,8 @@ const AddAccountBox = () => {
 
   const scrollToBottom = () => {
     scroll.scrollToBottom({
-      duration: 1500,
-      smooth: "easeInOutQuint",
+      duration: 1000,
+      smooth: true,
     });
   };
 
