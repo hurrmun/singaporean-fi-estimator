@@ -14,6 +14,8 @@ import {
   IconButton,
   HStack,
 } from "@chakra-ui/react";
+import { animateScroll as scroll } from "react-scroll";
+
 import { useFormContext, useFieldArray, Controller } from "react-hook-form";
 import { FaTrash, FaPlus } from "react-icons/fa";
 // import AccountField from "./AccountField";
@@ -22,6 +24,13 @@ const AddAccountBox = () => {
   const [accountName, setAccountName] = useState("");
 
   const handleChange = (event) => setAccountName(event.target.value);
+
+  const scrollToBottom = () => {
+    scroll.scrollToBottom({
+      duration: 1500,
+      smooth: "easeInOutQuint",
+    });
+  };
 
   const {
     control,
@@ -67,7 +76,10 @@ const AddAccountBox = () => {
             fontSize={18}
             paddingY={6}
             variant="outline"
-            onClick={handleAddAcount}
+            onClick={() => {
+              handleAddAcount();
+              scrollToBottom();
+            }}
           >
             <HStack>
               <FaPlus />
@@ -79,7 +91,6 @@ const AddAccountBox = () => {
           )}
         </Stack>
       </Box>
-      {/* TODO make the Account Field component take in the name from above and changes to it will affect the form state */}
       {fields.map((item, index) => (
         <Box
           key={item.id}
@@ -94,13 +105,6 @@ const AddAccountBox = () => {
               <Text fontWeight="bold" fontSize={20}>
                 {fields?.[index]?.name}
               </Text>
-              {/* <Button
-                type="button"
-                onClick={() => remove(index)}
-                colorScheme="red"
-              >
-                Delete
-              </Button> */}
               <IconButton
                 colorScheme="red"
                 onClick={() => remove(index)}

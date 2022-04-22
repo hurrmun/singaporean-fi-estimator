@@ -6,15 +6,7 @@ import {
   GridItem,
   Button,
 } from "@chakra-ui/react";
-import {
-  Link,
-  DirectLink,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from "react-scroll";
+import { animateScroll as scroll } from "react-scroll";
 import { useState, useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { formSchema } from "./FormValidation";
@@ -24,7 +16,7 @@ import Header from "./components/Header";
 import Info from "./components/Info";
 import PersonalDetails from "./components/PersonalDetails";
 import AddAccountBox from "./components/AddAccountBox";
-import AccountField from "./components/AccountField";
+// import AccountField from "./components/AccountField";
 import AccountsTotal from "./components/AccountsTotal";
 // import ProjectedCPF from "./components/ProjectedCPF";
 import NetWorth from "./NetWorth";
@@ -49,7 +41,10 @@ function App() {
   };
 
   const scrollToTop = () => {
-    scroll.scrollToTop();
+    scroll.scrollToTop({
+      duration: 1500,
+      smooth: "easeInOutQuint",
+    });
   };
 
   useEffect(() => {
@@ -130,7 +125,7 @@ function App() {
                     paddingY={6}
                     marginBottom={10}
                     type="submit"
-                    onClick={() => scrollToTop(50)}
+                    onClick={() => scrollToTop()}
                   >
                     Calculate Investments
                   </Button>
