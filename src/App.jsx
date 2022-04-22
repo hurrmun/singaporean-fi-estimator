@@ -117,6 +117,7 @@ function App() {
                     paddingY={6}
                     marginBottom={10}
                     type="submit"
+                    onClick={() => window.scrollTo(0, 0)}
                   >
                     Calculate Investments
                   </Button>
