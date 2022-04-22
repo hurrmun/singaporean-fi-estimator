@@ -113,7 +113,7 @@ function App() {
               textAlign="left"
             >
               <GridItem>
-                <Stack spacing={6}>
+                <Stack spacing={6} position="sticky" top={10}>
                   <PersonalDetails />
                   {/* <ProjectedCPF /> */}
                   <NetWorth yearMap={yearMap} />
