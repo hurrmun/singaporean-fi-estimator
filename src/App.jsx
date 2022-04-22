@@ -6,6 +6,15 @@ import {
   GridItem,
   Button,
 } from "@chakra-ui/react";
+import {
+  Link,
+  DirectLink,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from "react-scroll";
 import { useState, useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { formSchema } from "./FormValidation";
@@ -37,6 +46,10 @@ function App() {
     setAccounts(data.accounts);
     setInvestmentHorizon(data.investmentHorizon);
     console.log("data", data);
+  };
+
+  const scrollToTop = () => {
+    scroll.scrollToTop();
   };
 
   useEffect(() => {
@@ -117,7 +130,7 @@ function App() {
                     paddingY={6}
                     marginBottom={10}
                     type="submit"
-                    onClick={() => window.scrollTo(0, 0)}
+                    onClick={() => scrollToTop(50)}
                   >
                     Calculate Investments
                   </Button>
