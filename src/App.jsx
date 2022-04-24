@@ -128,7 +128,7 @@ function App() {
                   <NetWorth yearMap={yearMap} />
                 </Stack>
               </GridItem>
-              <GridItem colSpan={2}>
+              <GridItem colSpan={isLargerThan768 ? 2 : 1}>
                 <Stack spacing={6}>
                   <AddAccountBox />
                   <Button
