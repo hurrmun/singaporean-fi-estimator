@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  useMediaQuery,
   Box,
   Input,
   Text,
@@ -22,6 +23,8 @@ import { FaTrash, FaPlus } from "react-icons/fa";
 
 const AddAccountBox = () => {
   const [accountName, setAccountName] = useState("");
+
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
 
   const handleChange = (event) => setAccountName(event.target.value);
 
@@ -76,6 +79,15 @@ const AddAccountBox = () => {
             fontSize={18}
             paddingY={6}
             variant="outline"
+            style={
+              isLargerThan768
+                ? {}
+                : {
+                    whiteSpace: "normal",
+                    wordWrap: "break-word",
+                    padding: "2em",
+                  }
+            }
             onClick={() => {
               handleAddAcount();
               scrollToBottom();

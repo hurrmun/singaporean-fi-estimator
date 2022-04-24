@@ -1,4 +1,5 @@
 import {
+  useMediaQuery,
   Container,
   Stack,
   Box,
@@ -25,6 +26,8 @@ function App() {
   const [accounts, setAccounts] = useState([]);
   const [investmentHorizon, setInvestmentHorizon] = useState(0);
   const [yearMap, setYearMap] = useState([]);
+
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
 
   const methods = useForm({
     defaultValues: {
@@ -107,13 +110,19 @@ function App() {
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit, onError)}>
             <Grid
-              templateColumns="repeat(3, 1fr)"
+              templateColumns={
+                isLargerThan768 ? "repeat(3, 1fr)" : "repeat(1, 1fr)"
+              }
               gap={6}
               marginTop={10}
               textAlign="left"
             >
               <GridItem>
-                <Stack spacing={6} position="sticky" top={10}>
+                <Stack
+                  spacing={6}
+                  position={isLargerThan768 && "sticky"}
+                  top={10}
+                >
                   <PersonalDetails />
                   {/* <ProjectedCPF /> */}
                   <NetWorth yearMap={yearMap} />
