@@ -3,20 +3,18 @@ import {
   Box,
   Text,
   Stack,
-  Input,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
-  // Radio,
-  // RadioGroup,
-  // Button,
+  Radio,
+  RadioGroup,
 } from "@chakra-ui/react";
 import { Controller, useFormContext } from "react-hook-form";
 
 const PersonalDetails = () => {
-  // const [value, setValue] = React.useState("yes");
+  const [value, setValue] = React.useState("yes");
 
   const {
     control,
@@ -37,11 +35,6 @@ const PersonalDetails = () => {
             Your Details
           </Text>
           <Stack spacing={4}>
-            {/* <LabelInputGroup
-              name="monthlyIncome"
-              label="Monthly income before CPF deduction ($)"
-            />
-            <LabelInputGroup name="age" label="Age (years)" /> */}
             <Box>
               <Text>Investment Horizon (years)</Text>
               <Controller
@@ -64,12 +57,6 @@ const PersonalDetails = () => {
                       <NumberDecrementStepper />
                     </NumberInputStepper>
                   </NumberInput>
-                  // <Input
-                  //   {...field}
-                  //   marginTop={2}
-                  //   placeholder="E.g 20"
-                  //   type="number"
-                  // />
                 )}
               />
               {errors?.investmentHorizon && (
@@ -78,21 +65,18 @@ const PersonalDetails = () => {
                 </Text>
               )}
             </Box>
-            {/* <Stack spacing={4}>
-              <Text>Do you contribute to CPF as an employee</Text>
+            <Stack spacing={4}>
+              <Text>CPF Feature Coming Soon..?</Text>
               <RadioGroup onChange={setValue} value={value} colorScheme="teal">
                 <Stack direction="row" spacing={4}>
                   <Radio value="yes">Yes</Radio>
                   <Radio value="no">No</Radio>
                 </Stack>
               </RadioGroup>
-            </Stack> */}
+            </Stack>
           </Stack>
         </Stack>
       </Box>
-      {/* <Button isFullWidth colorScheme="teal" fontSize={18} paddingY={6}>
-        Calculate CPF
-      </Button> */}
     </>
   );
 };
